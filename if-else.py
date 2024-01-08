@@ -15,6 +15,5 @@ if (30<a<50) :
 
 if (50<a<60) :
     print (" you are a senior citizen")
-
 else :
   print (" you are too old ")
