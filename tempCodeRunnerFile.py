@@ -1,55 +1,64 @@
-# Question: Find the element with the highest frequency
+# This one tests whether you can use hashing without explicitly building a frequency table.
+
+# Question: Two Sum
 
 # Given:
 
-# arr = [1, 3, 2, 1, 4, 1, 3, 2, 3, 3]
+# arr = [2, 7, 11, 15]
+# target = 9
 
 # Write:
 
-# def max_frequency(arr):
+# def two_sum(arr, target):
 #     # your code
+
+# Find the indices of the two elements whose sum equals target.
 
 # Expected output:
 
-# 3
+# [0, 1]
 
 # Because:
 
-# 1 → 3 times
-# 2 → 2 times
-# 3 → 4 times  ← highest
-# 4 → 1 time
+# arr[0] + arr[1]
+#   2    +   7
+#      = 9
+# Constraints
+# Use a dictionary/hash map
+# Aim for O(n) average time
+# Don't use nested loops
+# Don't use index() repeatedly
+# Hint
+
+# As you traverse the array, for each element x, ask:
+
+# What number do I need to reach target?
+
+# That number is:
+
+# target - x
+
+# Then check whether you've already seen that number in your dictionary.
+
+# This is one of the canonical hashing problems. If this clicks, a whole family of DSA questions starts looking suspiciously similar.
 
 
-def first_repeat(lst):
-    """Return the highest frequency element that appears in a list."""
-
-   
-    d = dict()
+def twosum(lst , tar):
+    newlst = list()
     for ele in lst:
-        if ele in d:
-            d[ele] += 1
-        
-        else:
-            d[ele] = 1
+        for ele2 in lst:
+            if (ele + ele2) == target:
+                newlst.append(ele)
+                
 
-    return d
-
-
+    return newlst            
+    
 
 
 
-OUR_LIST =  [1, 3, 2, 1, 4, 1, 3, 2, 3, 3]
+OUR_LIST = [2,7,11,15]
+target = 9
 
-result = first_repeat(OUR_LIST)
+result = twosum(OUR_LIST , target)
 
-highFreq = float('-inf')
-highEle = None
-
-for x in result :
-   
-    if result[x] > highFreq:
-        highFreq = result[x]
-        highEle = x
-
-print(highEle, ":" , highFreq)
+print(result)
